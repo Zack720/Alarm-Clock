@@ -2,31 +2,90 @@
 <html>
     <head>
         <title>Clock</title>
+        <script>
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                if(h > 12) {
+                    h = h - 12;
+                }
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                var ampm = (h >= 12) ? "PM" : "AM";
+                m = checkTime(m);
+                s = checkTime(s);
+                var displayTime = h + ":" + m + ":" + s + " " + ampm;
+                console.log("updating time");
+                document.getElementById("currentTime").innerHTML = displayTime;
+                var t = setTimeout(startTime, 500);
+            }
+            
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+            }
+        </script>
         <style>
+            @font-face {
+                font-family: 'lcd'; 
+                src: url("Open24Hours.ttf");
+            }
             div.time {
-                color: white;                
+                background:black;
+                width : 200;
+                height : 75;
+                position: absolute;
+                left: 74px;
+                top: 68px;
             }
             div.clock {
-                background-color:black;
+                background-image : url("https://st.hzcdn.com/simgs/1f317b060355a19f_4-0865/contemporary-alarm-clocks.jpg");
+                width : 361px;
+                height : 214px;
+            }
+            span.time {
+                color: white;
+                font-family: 'lcd';
+                font-size: 36pt;
+            }
+            span.date {
+                color: white;
+                font-family: 'lcd';
+                font-size: 26pt;
+            }
+            span.alarm {
+                color: white;
+                font-family: 'lcd';
+                font-size: 26pt;
             }
         </style>
     </head>
-<body>
-    <div class="clock"> 
-        <div class="time">
-          <h1>Clock</h1>
-          <h2>Alarm</h2>
-          <h3>Login/signup</h3>
+    <body onload="startTime()">
+        <div class="clock"> 
+            <div class="time">
+                <span class="time" id="currentTime">12:27:59 PM</span>
+            </div>
+            <!--
+            <div class="alarm1">
+                <span class="alarm">6:00 AM</span>
+            </div>
+            <div class="date">
+                <span class="date" id="currentDate">12/31</span>
+            </div>
+            <div class="alarm2">
+                <span class="alarm">5:15 AM</span>
+            </div>
+            -->
         </div>
-    </div>
-    <p>An alarm clock for those who need simple time.</p>
-    <p style="color:red;">An alarm clock for those who need simple time.</p>
-    <p style="text align:center;">An alarm clock for those who need simple time.</p>
-</body>
+        <p>An alarm clock for those who need simple time.</p>
+        <p style="color:red;">An alarm clock for those who need simple time.</p>
+        <p style="text align:center;">An alarm clock for those who need simple time.</p>
+        <ul>
+          <li><a href="Alarm clock">Home</a></li>
+          <li><a href="Alarm clock">News</a></li>
+          <li><a href="Alarm clock">Contact</a></li>
+          <li><a href="Alarm clock">About</a></li>        
+        </ul>
+    </body>
 </html>
-<ul>
-  <li><a href="Alarm clock">Home</a></li>
-  <li><a href="Alarm clock">News</a></li>
-  <li><a href="Alarm clock">Contact</a></li>
-  <li><a href="Alarm clock">About</a></li>
-</ul>
+
