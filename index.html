@@ -18,7 +18,12 @@
                 console.log("updating time");
                 document.getElementById("currentTime").innerHTML = displayTime;
                 var t = setTimeout(startTime, 500);
+                var month = today.getMonth()+1; 
+                var date = today.getDate();
+                var displayDate = month + "/"+ date + "/"; 
+                document.getElementById("currentDate").innerHTML = displayDate;
             }
+            
             
             function checkTime(i) {
                 if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -85,7 +90,7 @@
                 <span class="alarm"></span>
             </div>
             <div class="date">
-                <span class="date" id="currentDate">12/31</span>
+                <span class="date" id="currentDate">12/29</span>
             </div>
             <div class="alarm2">
                 <span class="alarm"></span>
